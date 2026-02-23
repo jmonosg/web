@@ -21,10 +21,10 @@
 
 <style>
 :root{
-  --teal:#0097A7;--teal-dark:#00798A;--teal-deeper:#005F6B;
-  --teal-light:#E0F7FA;--teal-bg:#F2FCFD;
+  --teal:#009AFF;--teal-dark:#0080D6;--teal-deeper:#0066AD;
+  --teal-light:#E0F0FF;--teal-bg:#F2F8FF;
   --white:#FFFFFF;--text-dark:#1A2E3B;--text-mid:#3D5A6E;
-  --border:#C8E6EA;--shadow:rgba(0,151,167,.12);--radius:14px;
+  --border:#C0D8F0;--shadow:rgba(0,154,255,.12);--radius:14px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text-dark);height:100%;overflow:hidden;-webkit-tap-highlight-color:transparent}
@@ -58,7 +58,7 @@ html,body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--t
 .option-text{display:flex;flex-direction:column}
 .bottom{padding:12px 20px max(16px,env(safe-area-inset-bottom));flex-shrink:0;position:sticky;bottom:0;background:var(--white);z-index:5}
 .continue-btn{width:100%;padding:16px;border:none;border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;letter-spacing:.3px;color:var(--white);background:linear-gradient(135deg,var(--teal),var(--teal-dark));cursor:pointer;transition:all .3s;opacity:.35;pointer-events:none;position:relative;overflow:hidden}
-.continue-btn.active{opacity:1;pointer-events:all;box-shadow:0 6px 24px rgba(0,151,167,.3)}
+.continue-btn.active{opacity:1;pointer-events:all;box-shadow:0 6px 24px rgba(0,154,255,.3)}
 .continue-btn:active{transform:scale(.98)}
 .continue-btn.active::after{content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);animation:shimmer 2.5s infinite}
 @keyframes shimmer{to{left:125%}}
@@ -78,7 +78,7 @@ html,body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--t
 .intro-bullet-icon svg{width:12px;height:12px;stroke:var(--teal)}
 .intro-meta{font-size:13px;color:var(--text-mid);line-height:1.6;margin-bottom:20px}
 .intro-meta strong{color:var(--text-dark)}
-.start-btn{width:100%;padding:17px;border:none;border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;color:var(--white);background:linear-gradient(135deg,var(--teal),var(--teal-dark));cursor:pointer;box-shadow:0 6px 24px rgba(0,151,167,.3);transition:all .3s;position:relative;overflow:hidden}
+.start-btn{width:100%;padding:17px;border:none;border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;color:var(--white);background:linear-gradient(135deg,var(--teal),var(--teal-dark));cursor:pointer;box-shadow:0 6px 24px rgba(0,154,255,.3);transition:all .3s;position:relative;overflow:hidden}
 .start-btn:active{transform:scale(.98)}
 .start-btn::after{content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);animation:shimmer 2.5s infinite}
 .nutrition-content{flex:1;display:flex;flex-direction:column;align-items:center;padding:12px 20px 0}
@@ -186,7 +186,7 @@ html,body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--t
 <div class="option-card" onclick="sel(this,'bathroom_count','3_plus')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Three or more</span><span class="option-sub">Multiple bathrooms throughout</span></div></div>
 </div>
 </div>
-<div class="bottom"><button class="continue-btn" onclick="goTo(4)">Continue</button>
+<div class="bottom"><button class="continue-btn" onclick="handleBathroomCountNext()">Continue</button>
 <div class="step-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
 </div>
 
@@ -205,7 +205,7 @@ html,body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--t
 <div class="nutrition-bullet"><div class="nutrition-bullet-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><span class="nutrition-bullet-text">A modern bathroom sets your home apart in competitive markets</span></div>
 </div>
 </div>
-<div class="bottom"><button class="continue-btn active" onclick="goTo(5)">Let's Go</button></div>
+<div class="bottom"><button class="continue-btn active" onclick="handleAfterNutrition1()">Let's Go</button></div>
 </div>
 
 <!-- S5: Q4 Reno count -->
@@ -218,7 +218,7 @@ html,body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--t
 <div class="options">
 <div class="option-card" onclick="sel(this,'renovation_count','1')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Just one</span><span class="option-sub">Single bathroom project</span></div></div>
 <div class="option-card" onclick="sel(this,'renovation_count','2')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Two bathrooms</span><span class="option-sub">A couple of rooms to refresh</span></div></div>
-<div class="option-card" onclick="sel(this,'renovation_count','3_plus')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Three or more</span><span class="option-sub">Full-home bathroom overhaul</span></div></div>
+<div class="option-card" id="reno-3plus" onclick="sel(this,'renovation_count','3_plus')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Three or more</span><span class="option-sub">Full-home bathroom overhaul</span></div></div>
 </div>
 </div>
 <div class="bottom"><button class="continue-btn" onclick="goTo(6)">Continue</button>
@@ -436,6 +436,37 @@ function sel(card, field, value) {
 // ═══════════════════════════════════════════
 // COUNTRY → ZIP LOGIC
 // ═══════════════════════════════════════════
+// ═══════════════════════════════════════════
+// BATHROOM COUNT → RENOVATION COUNT LOGIC
+// ═══════════════════════════════════════════
+function handleBathroomCountNext() {
+  var count = answers.bathroom_count;
+  if (count === '1') {
+    // Only 1 bathroom — auto-set renovation count
+    answers.renovation_count = '1';
+  } else {
+    // Prepare renovation count screen
+    var reno3plus = document.getElementById('reno-3plus');
+    if (count === '2') {
+      reno3plus.style.display = 'none';
+    } else {
+      reno3plus.style.display = '';
+    }
+    // Reset previous selection
+    document.querySelectorAll('[data-screen="5"] .option-card').forEach(function(c){ c.classList.remove('selected'); });
+    document.querySelector('[data-screen="5"] .continue-btn').classList.remove('active');
+  }
+  goTo(4); // Always go to nutrition screen first
+}
+
+function handleAfterNutrition1() {
+  if (answers.bathroom_count === '1') {
+    goTo(6); // Skip renovation count, go straight to timeline
+  } else {
+    goTo(5); // Show renovation count question
+  }
+}
+
 function handleCountryNext() {
   var country = answers.country;
   if (country === 'CA' || country === 'US') {
