@@ -8,117 +8,16 @@
 <title>Bathroom Renovation Assessment — Five Star Bath Solutions</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 
 <!-- ═══════════════════════════════════════════
      META PIXEL — Paste your Meta Pixel base code here
      ═══════════════════════════════════════════ -->
-<!-- <script>!function(f,b,e,v,n,t,s){...}('YOUR_PIXEL_ID');</script> -->
 
 <!-- ═══════════════════════════════════════════
      GOOGLE TAG — Paste your Google tag (gtag.js) here
      ═══════════════════════════════════════════ -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_ID"></script> -->
 
-<style>
-:root{
-  --teal:#009AFF;--teal-dark:#0080D6;--teal-deeper:#0066AD;
-  --teal-light:#E0F0FF;--teal-bg:#F2F8FF;
-  --white:#FFFFFF;--text-dark:#1A2E3B;--text-mid:#3D5A6E;
-  --border:#C0D8F0;--shadow:rgba(0,154,255,.12);--radius:14px;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text-dark);height:100%;overflow:hidden;-webkit-tap-highlight-color:transparent}
-#app{position:relative;width:100%;height:100%;overflow:hidden}
-.screen{position:absolute;inset:0;display:flex;flex-direction:column;background:var(--white);opacity:0;pointer-events:none;transition:opacity .35s ease,transform .35s ease;transform:translateX(50px);overflow-y:auto;-webkit-overflow-scrolling:touch}
-.screen.active{opacity:1;pointer-events:all;transform:translateX(0);z-index:10}
-.screen.exit-left{opacity:0;transform:translateX(-50px);z-index:5}
-.top-bar{display:flex;align-items:center;justify-content:space-between;padding:16px 20px 10px;flex-shrink:0;position:sticky;top:0;background:var(--white);z-index:5}
-.icon-btn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;background:transparent;cursor:pointer;transition:all .2s;flex-shrink:0}
-.icon-btn:active{background:var(--teal-light);border-color:var(--teal)}
-.icon-btn svg{width:18px;height:18px;stroke:var(--teal-dark)}
-.icon-btn.disabled{opacity:.25;pointer-events:none}
-.top-logo{height:32px;object-fit:contain}
-.progress-wrap{padding:0 20px;flex-shrink:0}
-.progress-track{height:4px;border-radius:3px;background:var(--teal-light);overflow:hidden}
-.progress-fill{height:100%;width:0%;border-radius:3px;background:linear-gradient(90deg,var(--teal),var(--teal-dark));transition:width .5s cubic-bezier(.4,0,.2,1)}
-.content{flex:1;display:flex;flex-direction:column;align-items:center;padding:12px 20px 0}
-.emoji-icon{font-size:38px;text-align:center;margin-bottom:4px;animation:float 3s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-.question{font-size:clamp(20px,5.5vw,26px);font-weight:800;color:var(--text-dark);text-align:center;line-height:1.22;margin-bottom:16px}
-.options{display:flex;flex-direction:column;gap:10px;width:100%}
-.option-card{width:100%;padding:15px 16px;border-radius:var(--radius);background:var(--teal-bg);border:2px solid transparent;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .2s;position:relative}
-.option-card:active{transform:scale(.98)}
-.option-card.selected{border-color:var(--teal);background:var(--white);box-shadow:0 4px 16px var(--shadow),inset 0 0 0 2px var(--teal)}
-.option-radio{width:22px;height:22px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;position:relative;transition:border-color .2s}
-.option-card.selected .option-radio{border-color:var(--teal)}
-.option-card.selected .option-radio::after{content:'';width:11px;height:11px;border-radius:50%;background:var(--teal);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);animation:pop .3s cubic-bezier(.2,.8,.4,1.4) forwards}
-@keyframes pop{to{transform:translate(-50%,-50%) scale(1)}}
-.option-label{font-size:15px;font-weight:700;color:var(--text-dark)}
-.option-sub{font-size:12px;color:var(--text-mid);margin-top:1px}
-.option-text{display:flex;flex-direction:column}
-.bottom{padding:12px 20px max(16px,env(safe-area-inset-bottom));flex-shrink:0;position:sticky;bottom:0;background:var(--white);z-index:5}
-.continue-btn{width:100%;padding:16px;border:none;border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;letter-spacing:.3px;color:var(--white);background:linear-gradient(135deg,var(--teal),var(--teal-dark));cursor:pointer;transition:all .3s;opacity:.35;pointer-events:none;position:relative;overflow:hidden}
-.continue-btn.active{opacity:1;pointer-events:all;box-shadow:0 6px 24px rgba(0,154,255,.3)}
-.continue-btn:active{transform:scale(.98)}
-.continue-btn.active::after{content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);animation:shimmer 2.5s infinite}
-@keyframes shimmer{to{left:125%}}
-.continue-btn.sending{opacity:.7;pointer-events:none}
-.continue-btn.sending::before{content:'Saving...';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--teal),var(--teal-dark));border-radius:var(--radius)}
-.step-dots{display:flex;justify-content:center;gap:6px;margin-top:10px}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--border);transition:all .3s}
-.dot.filled{background:var(--teal);opacity:.35}
-.dot.active{width:22px;border-radius:4px;background:var(--teal);opacity:1}
-.intro-content{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 24px;text-align:center}
-.intro-logo{width:min(220px,55vw);margin-bottom:20px}
-.intro-title{font-size:clamp(22px,6vw,28px);font-weight:800;color:var(--text-dark);line-height:1.2;margin-bottom:10px}
-.intro-desc{font-size:14px;color:var(--text-mid);line-height:1.5;margin-bottom:16px}
-.intro-bullets{text-align:left;margin-bottom:20px;width:100%}
-.intro-bullet{display:flex;align-items:flex-start;gap:10px;padding:7px 0;font-size:14px;color:var(--text-dark);line-height:1.4}
-.intro-bullet-icon{width:22px;height:22px;border-radius:50%;background:var(--teal-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.intro-bullet-icon svg{width:12px;height:12px;stroke:var(--teal)}
-.intro-meta{font-size:13px;color:var(--text-mid);line-height:1.6;margin-bottom:20px}
-.intro-meta strong{color:var(--text-dark)}
-.start-btn{width:100%;padding:17px;border:none;border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;color:var(--white);background:linear-gradient(135deg,var(--teal),var(--teal-dark));cursor:pointer;box-shadow:0 6px 24px rgba(0,154,255,.3);transition:all .3s;position:relative;overflow:hidden}
-.start-btn:active{transform:scale(.98)}
-.start-btn::after{content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);animation:shimmer 2.5s infinite}
-.nutrition-content{flex:1;display:flex;flex-direction:column;align-items:center;padding:12px 20px 0}
-.nutrition-badge{display:inline-flex;align-items:center;gap:5px;background:var(--teal-light);color:var(--teal-dark);font-size:11px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:10px}
-.nutrition-title{font-size:clamp(20px,5.5vw,24px);font-weight:800;color:var(--text-dark);text-align:center;line-height:1.22;margin-bottom:10px}
-.nutrition-text{font-size:14px;color:var(--text-mid);text-align:center;line-height:1.55;margin-bottom:14px;padding:0 4px}
-.nutrition-bullets{width:100%;display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
-.nutrition-bullet{display:flex;align-items:flex-start;gap:10px;background:var(--teal-bg);border-radius:12px;padding:12px 14px}
-.nutrition-bullet-icon{width:26px;height:26px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.nutrition-bullet-icon svg{width:13px;height:13px;stroke:var(--white);fill:none}
-.nutrition-bullet-text{font-size:13px;color:var(--text-dark);line-height:1.4;font-weight:500}
-.lead-content{flex:1;display:flex;flex-direction:column;align-items:center;padding:12px 20px 0}
-.lead-title{font-size:clamp(20px,5.5vw,24px);font-weight:800;color:var(--text-dark);text-align:center;line-height:1.22;margin-bottom:8px}
-.lead-text{font-size:14px;color:var(--text-mid);text-align:center;line-height:1.55;margin-bottom:14px}
-.lead-features{width:100%;display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
-.lead-feature{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-dark);line-height:1.4}
-.lead-feature-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0}
-.lead-trust{font-size:12px;color:var(--text-mid);text-align:center;margin-bottom:14px;font-weight:600}
-.input-group{width:100%;margin-bottom:10px}
-.input-label{font-size:11px;font-weight:700;color:var(--text-mid);margin-bottom:4px;text-transform:uppercase;letter-spacing:.4px}
-.input-field{width:100%;padding:13px 14px;border:2px solid var(--border);border-radius:12px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--text-dark);background:var(--teal-bg);transition:border-color .2s;outline:none}
-.input-field:focus{border-color:var(--teal);background:var(--white)}
-.input-field::placeholder{color:#9BB8C2}
-.thankyou-content{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 24px;text-align:center}
-.thankyou-check{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-dark));display:flex;align-items:center;justify-content:center;margin-bottom:16px;animation:popIn .5s cubic-bezier(.2,.8,.4,1.4) forwards}
-@keyframes popIn{from{transform:scale(0)}to{transform:scale(1)}}
-.thankyou-check svg{width:34px;height:34px;stroke:white}
-.thankyou-title{font-size:24px;font-weight:800;color:var(--text-dark);margin-bottom:6px}
-.thankyou-text{font-size:14px;color:var(--text-mid);line-height:1.55;margin-bottom:16px}
-.thankyou-highlight{background:var(--teal-bg);border-radius:12px;padding:14px 18px;width:100%;margin-bottom:16px;border-left:4px solid var(--teal)}
-.thankyou-highlight p{font-size:14px;color:var(--text-dark);line-height:1.45}
-.thankyou-highlight strong{color:var(--teal-dark)}
-.text-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border:2px solid var(--teal);border-radius:var(--radius);background:transparent;color:var(--teal-dark);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none}
-.text-btn:active{background:var(--teal-light)}
-.zip-input-wrap{width:100%;max-width:260px;margin:0 auto 8px}
-.zip-big-input{width:100%;padding:16px 18px;border:2px solid var(--border);border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:22px;font-weight:700;color:var(--text-dark);text-align:center;background:var(--teal-bg);letter-spacing:2px;transition:border-color .2s;outline:none}
-.zip-big-input:focus{border-color:var(--teal);background:var(--white)}
-.zip-big-input::placeholder{color:#9BB8C2;font-weight:500;letter-spacing:1px;font-size:18px}
-.zip-hint{font-size:12px;color:var(--text-mid);text-align:center;margin-top:6px}
-</style>
 </head>
 <body>
 <div id="app">
@@ -147,12 +46,11 @@ html,body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--t
 <div class="emoji-icon">🏠</div>
 <h1 class="question">Do you own or rent your home?</h1>
 <div class="options">
-<div class="option-card" onclick="sel(this,'ownership_status','owner')"><div class="option-radio"></div><div class="option-text"><span class="option-label">I own my home</span><span class="option-sub">You hold the title or mortgage</span></div></div>
-<div class="option-card" onclick="sel(this,'ownership_status','renter')"><div class="option-radio"></div><div class="option-text"><span class="option-label">I rent</span><span class="option-sub">You lease from a landlord</span></div></div>
+<div class="option-card" onclick="sel(this,'ownership_status','owner',function(){goTo(2)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">I own my home</span><span class="option-sub">You hold the title or mortgage</span></div></div>
+<div class="option-card" onclick="sel(this,'ownership_status','renter',function(){goTo(2)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">I rent</span><span class="option-sub">You lease from a landlord</span></div></div>
 </div>
+<div class="step-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
 </div>
-<div class="bottom"><button class="continue-btn" onclick="goTo(2)">Continue</button>
-<div class="step-dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
 </div>
 
 <!-- S2: Q2 Home type -->
@@ -163,14 +61,13 @@ html,body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--t
 <div class="emoji-icon">🏘️</div>
 <h1 class="question">What type of home do you live in?</h1>
 <div class="options">
-<div class="option-card" onclick="sel(this,'home_type','detached')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Detached</span><span class="option-sub">Standalone single-family home</span></div></div>
-<div class="option-card" onclick="sel(this,'home_type','semi_detached')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Semi-detached</span><span class="option-sub">Shares one wall with a neighbour</span></div></div>
-<div class="option-card" onclick="sel(this,'home_type','townhouse')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Townhouse</span><span class="option-sub">Row or terraced home</span></div></div>
-<div class="option-card" onclick="sel(this,'home_type','condo')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Condo / Apartment</span><span class="option-sub">Unit within a larger building</span></div></div>
+<div class="option-card" onclick="sel(this,'home_type','detached',function(){goTo(3)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Detached</span><span class="option-sub">Standalone single-family home</span></div></div>
+<div class="option-card" onclick="sel(this,'home_type','semi_detached',function(){goTo(3)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Semi-detached</span><span class="option-sub">Shares one wall with a neighbour</span></div></div>
+<div class="option-card" onclick="sel(this,'home_type','townhouse',function(){goTo(3)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Townhouse</span><span class="option-sub">Row or terraced home</span></div></div>
+<div class="option-card" onclick="sel(this,'home_type','condo',function(){goTo(3)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Condo / Apartment</span><span class="option-sub">Unit within a larger building</span></div></div>
 </div>
+<div class="step-dots"><div class="dot filled"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
 </div>
-<div class="bottom"><button class="continue-btn" onclick="goTo(3)">Continue</button>
-<div class="step-dots"><div class="dot filled"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
 </div>
 
 <!-- S3: Q3 Bathrooms -->
@@ -181,13 +78,12 @@ html,body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--t
 <div class="emoji-icon">🛁</div>
 <h1 class="question">How many bathrooms do you have?</h1>
 <div class="options">
-<div class="option-card" onclick="sel(this,'bathroom_count','1')"><div class="option-radio"></div><div class="option-text"><span class="option-label">One bathroom</span><span class="option-sub">Single full or half bath</span></div></div>
-<div class="option-card" onclick="sel(this,'bathroom_count','2')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Two bathrooms</span><span class="option-sub">Primary + guest bath</span></div></div>
-<div class="option-card" onclick="sel(this,'bathroom_count','3_plus')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Three or more</span><span class="option-sub">Multiple bathrooms throughout</span></div></div>
+<div class="option-card" onclick="sel(this,'bathroom_count','1',function(){handleBathroomCountNext()})"><div class="option-radio"></div><div class="option-text"><span class="option-label">One bathroom</span><span class="option-sub">Single full or half bath</span></div></div>
+<div class="option-card" onclick="sel(this,'bathroom_count','2',function(){handleBathroomCountNext()})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Two bathrooms</span><span class="option-sub">Primary + guest bath</span></div></div>
+<div class="option-card" onclick="sel(this,'bathroom_count','3_plus',function(){handleBathroomCountNext()})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Three or more</span><span class="option-sub">Multiple bathrooms throughout</span></div></div>
 </div>
+<div class="step-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
 </div>
-<div class="bottom"><button class="continue-btn" onclick="handleBathroomCountNext()">Continue</button>
-<div class="step-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
 </div>
 
 <!-- S4: NUTRITION 1 -->
@@ -216,13 +112,12 @@ html,body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--t
 <div class="emoji-icon">🚿</div>
 <h1 class="question">How many bathrooms are you considering renovating?</h1>
 <div class="options">
-<div class="option-card" onclick="sel(this,'renovation_count','1')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Just one</span><span class="option-sub">Single bathroom project</span></div></div>
-<div class="option-card" onclick="sel(this,'renovation_count','2')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Two bathrooms</span><span class="option-sub">A couple of rooms to refresh</span></div></div>
-<div class="option-card" id="reno-3plus" onclick="sel(this,'renovation_count','3_plus')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Three or more</span><span class="option-sub">Full-home bathroom overhaul</span></div></div>
+<div class="option-card" onclick="sel(this,'renovation_count','1',function(){goTo(6)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Just one</span><span class="option-sub">Single bathroom project</span></div></div>
+<div class="option-card" onclick="sel(this,'renovation_count','2',function(){goTo(6)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Two bathrooms</span><span class="option-sub">A couple of rooms to refresh</span></div></div>
+<div class="option-card" id="reno-3plus" onclick="sel(this,'renovation_count','3_plus',function(){goTo(6)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Three or more</span><span class="option-sub">Full-home bathroom overhaul</span></div></div>
 </div>
+<div class="step-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
 </div>
-<div class="bottom"><button class="continue-btn" onclick="goTo(6)">Continue</button>
-<div class="step-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
 </div>
 
 <!-- S6: Q5 Timeline -->
@@ -233,14 +128,13 @@ html,body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--t
 <div class="emoji-icon">📅</div>
 <h1 class="question">When are you planning to renovate?</h1>
 <div class="options">
-<div class="option-card" onclick="sel(this,'renovation_timeline','asap')"><div class="option-radio"></div><div class="option-text"><span class="option-label">As soon as possible</span><span class="option-sub">Ready to start immediately</span></div></div>
-<div class="option-card" onclick="sel(this,'renovation_timeline','3_months')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Within 3 months</span><span class="option-sub">Planning for the near future</span></div></div>
-<div class="option-card" onclick="sel(this,'renovation_timeline','6_months')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Within 6 months</span><span class="option-sub">Exploring options, no rush</span></div></div>
-<div class="option-card" onclick="sel(this,'renovation_timeline','browsing')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Just browsing</span><span class="option-sub">Gathering ideas for later</span></div></div>
+<div class="option-card" onclick="sel(this,'renovation_timeline','asap',function(){goTo(7)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">As soon as possible</span><span class="option-sub">Ready to start immediately</span></div></div>
+<div class="option-card" onclick="sel(this,'renovation_timeline','3_months',function(){goTo(7)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Within 3 months</span><span class="option-sub">Planning for the near future</span></div></div>
+<div class="option-card" onclick="sel(this,'renovation_timeline','6_months',function(){goTo(7)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Within 6 months</span><span class="option-sub">Exploring options, no rush</span></div></div>
+<div class="option-card" onclick="sel(this,'renovation_timeline','browsing',function(){goTo(7)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Just browsing</span><span class="option-sub">Gathering ideas for later</span></div></div>
 </div>
+<div class="step-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
 </div>
-<div class="bottom"><button class="continue-btn" onclick="goTo(7)">Continue</button>
-<div class="step-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
 </div>
 
 <!-- S7: Q6 Style -->
@@ -251,14 +145,13 @@ html,body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--t
 <div class="emoji-icon">🎨</div>
 <h1 class="question">What bathroom style do you prefer?</h1>
 <div class="options">
-<div class="option-card" onclick="sel(this,'bathroom_style','modern')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Modern / Minimalist</span><span class="option-sub">Clean lines, neutral tones, sleek fixtures</span></div></div>
-<div class="option-card" onclick="sel(this,'bathroom_style','classic')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Classic / Traditional</span><span class="option-sub">Timeless elegance, warm finishes</span></div></div>
-<div class="option-card" onclick="sel(this,'bathroom_style','spa')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Spa / Luxury</span><span class="option-sub">High-end materials, freestanding tub, rain shower</span></div></div>
-<div class="option-card" onclick="sel(this,'bathroom_style','undecided')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Not sure yet</span><span class="option-sub">Open to suggestions from a designer</span></div></div>
+<div class="option-card" onclick="sel(this,'bathroom_style','modern',function(){goTo(8)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Modern / Minimalist</span><span class="option-sub">Clean lines, neutral tones, sleek fixtures</span></div></div>
+<div class="option-card" onclick="sel(this,'bathroom_style','classic',function(){goTo(8)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Classic / Traditional</span><span class="option-sub">Timeless elegance, warm finishes</span></div></div>
+<div class="option-card" onclick="sel(this,'bathroom_style','spa',function(){goTo(8)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Spa / Luxury</span><span class="option-sub">High-end materials, freestanding tub, rain shower</span></div></div>
+<div class="option-card" onclick="sel(this,'bathroom_style','undecided',function(){goTo(8)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Not sure yet</span><span class="option-sub">Open to suggestions from a designer</span></div></div>
 </div>
+<div class="step-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
 </div>
-<div class="bottom"><button class="continue-btn" onclick="goTo(8)">Continue</button>
-<div class="step-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div></div>
 </div>
 
 <!-- S8: NUTRITION 2 -->
@@ -288,15 +181,14 @@ html,body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--t
 <div class="emoji-icon">🔧</div>
 <h1 class="question">What type of renovation are you considering?</h1>
 <div class="options">
-<div class="option-card" onclick="sel(this,'renovation_type','full_remodel')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Full remodel</span><span class="option-sub">Gut and rebuild from scratch</span></div></div>
-<div class="option-card" onclick="sel(this,'renovation_type','tub_to_shower')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Tub-to-shower conversion</span><span class="option-sub">Replace bathtub with a walk-in shower</span></div></div>
-<div class="option-card" onclick="sel(this,'renovation_type','refresh')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Fixture & surface refresh</span><span class="option-sub">Update vanity, tiles, and hardware</span></div></div>
-<div class="option-card" onclick="sel(this,'renovation_type','accessibility')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Accessibility upgrade</span><span class="option-sub">Walk-in tub, grab bars, barrier-free entry</span></div></div>
-<div class="option-card" onclick="sel(this,'renovation_type','undecided')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Not sure yet</span><span class="option-sub">I'd like expert guidance on the best option</span></div></div>
+<div class="option-card" onclick="sel(this,'renovation_type','full_remodel',function(){goTo(10)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Full remodel</span><span class="option-sub">Gut and rebuild from scratch</span></div></div>
+<div class="option-card" onclick="sel(this,'renovation_type','tub_to_shower',function(){goTo(10)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Tub-to-shower conversion</span><span class="option-sub">Replace bathtub with a walk-in shower</span></div></div>
+<div class="option-card" onclick="sel(this,'renovation_type','refresh',function(){goTo(10)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Fixture & surface refresh</span><span class="option-sub">Update vanity, tiles, and hardware</span></div></div>
+<div class="option-card" onclick="sel(this,'renovation_type','accessibility',function(){goTo(10)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Accessibility upgrade</span><span class="option-sub">Walk-in tub, grab bars, barrier-free entry</span></div></div>
+<div class="option-card" onclick="sel(this,'renovation_type','undecided',function(){goTo(10)})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Not sure yet</span><span class="option-sub">I'd like expert guidance on the best option</span></div></div>
 </div>
+<div class="step-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot active"></div><div class="dot"></div></div>
 </div>
-<div class="bottom"><button class="continue-btn" onclick="goTo(10)">Continue</button>
-<div class="step-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot active"></div><div class="dot"></div></div></div>
 </div>
 
 <!-- S10: Q8 Country -->
@@ -307,13 +199,12 @@ html,body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--t
 <div class="emoji-icon">🌎</div>
 <h1 class="question">Where are you located?</h1>
 <div class="options">
-<div class="option-card" onclick="sel(this,'country','CA')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Canada</span><span class="option-sub">Provinces and territories</span></div></div>
-<div class="option-card" onclick="sel(this,'country','US')"><div class="option-radio"></div><div class="option-text"><span class="option-label">United States</span><span class="option-sub">All 50 states</span></div></div>
-<div class="option-card" onclick="sel(this,'country','other')"><div class="option-radio"></div><div class="option-text"><span class="option-label">Other</span><span class="option-sub">Outside North America</span></div></div>
+<div class="option-card" onclick="sel(this,'country','CA',function(){handleCountryNext()})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Canada</span><span class="option-sub">Provinces and territories</span></div></div>
+<div class="option-card" onclick="sel(this,'country','US',function(){handleCountryNext()})"><div class="option-radio"></div><div class="option-text"><span class="option-label">United States</span><span class="option-sub">All 50 states</span></div></div>
+<div class="option-card" onclick="sel(this,'country','other',function(){handleCountryNext()})"><div class="option-radio"></div><div class="option-text"><span class="option-label">Other</span><span class="option-sub">Outside North America</span></div></div>
 </div>
+<div class="step-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot active"></div></div>
 </div>
-<div class="bottom"><button class="continue-btn" onclick="handleCountryNext()">Continue</button>
-<div class="step-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot active"></div></div></div>
 </div>
 
 <!-- S11: Q8.1 ZIP -->
@@ -365,222 +256,6 @@ html,body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--t
 </div>
 
 </div>
-
-<script>
-// ═══════════════════════════════════════════
-// CONFIG
-// ═══════════════════════════════════════════
-var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw-o1vUl0pZoBJUJ8ux_iSATNxCdhmzdvzbywKpkr14Ru02q2m0PZ0YPTEJt5dvH0DY/exec";
-
-// Score map
-var SCORES = {
-  ownership_status: { owner:30, renter:0 },
-  home_type: { detached:30, semi_detached:20, townhouse:15, condo:10 },
-  bathroom_count: { "1":10, "2":20, "3_plus":30 },
-  renovation_count: { "1":10, "2":20, "3_plus":30 },
-  renovation_timeline: { asap:30, "3_months":25, "6_months":15, browsing:5 },
-  bathroom_style: { modern:10, classic:10, spa:10, undecided:5 },
-  renovation_type: { full_remodel:30, tub_to_shower:25, refresh:15, accessibility:20, undecided:5 },
-  country: { CA:20, US:20, other:0 }
-};
-
-// ═══════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════
-var currentScreen = 0;
-var hist = [0];
-var answers = {};
-var registroSaved = false;
-
-// ═══════════════════════════════════════════
-// NAVIGATION
-// ═══════════════════════════════════════════
-function goTo(n) {
-  var curr = document.querySelector('.screen.active');
-  if (curr) { curr.classList.remove('active'); curr.classList.add('exit-left'); }
-  setTimeout(function(){ document.querySelectorAll('.screen.exit-left').forEach(function(s){ s.classList.remove('exit-left'); }); }, 350);
-  var next = document.querySelector('[data-screen="'+n+'"]');
-  if (next) { next.classList.add('active'); next.scrollTop = 0; }
-  currentScreen = n;
-  hist.push(n);
-}
-
-function goBack() {
-  if (hist.length <= 1) return;
-  hist.pop();
-  var prev = hist[hist.length - 1];
-  var curr = document.querySelector('.screen.active');
-  if (curr) { curr.classList.remove('active'); curr.style.transform='translateX(50px)'; curr.style.opacity='0'; }
-  var target = document.querySelector('[data-screen="'+prev+'"]');
-  if (target) {
-    target.style.transform = 'translateX(-50px)'; target.style.opacity = '0';
-    target.classList.add('active'); target.scrollTop = 0;
-    requestAnimationFrame(function(){
-      target.style.transform = ''; target.style.opacity = '';
-      if (curr) { curr.style.transform = ''; curr.style.opacity = ''; }
-    });
-  }
-  currentScreen = prev;
-}
-
-// ═══════════════════════════════════════════
-// SELECTION
-// ═══════════════════════════════════════════
-function sel(card, field, value) {
-  card.closest('.options').querySelectorAll('.option-card').forEach(function(c){ c.classList.remove('selected'); });
-  card.classList.add('selected');
-  card.closest('.screen').querySelector('.continue-btn').classList.add('active');
-  answers[field] = value;
-}
-
-// ═══════════════════════════════════════════
-// COUNTRY → ZIP LOGIC
-// ═══════════════════════════════════════════
-// ═══════════════════════════════════════════
-// BATHROOM COUNT → RENOVATION COUNT LOGIC
-// ═══════════════════════════════════════════
-function handleBathroomCountNext() {
-  var count = answers.bathroom_count;
-  if (count === '1') {
-    // Only 1 bathroom — auto-set renovation count
-    answers.renovation_count = '1';
-  } else {
-    // Prepare renovation count screen
-    var reno3plus = document.getElementById('reno-3plus');
-    if (count === '2') {
-      reno3plus.style.display = 'none';
-    } else {
-      reno3plus.style.display = '';
-    }
-    // Reset previous selection
-    document.querySelectorAll('[data-screen="5"] .option-card').forEach(function(c){ c.classList.remove('selected'); });
-    document.querySelector('[data-screen="5"] .continue-btn').classList.remove('active');
-  }
-  goTo(4); // Always go to nutrition screen first
-}
-
-function handleAfterNutrition1() {
-  if (answers.bathroom_count === '1') {
-    goTo(6); // Skip renovation count, go straight to timeline
-  } else {
-    goTo(5); // Show renovation count question
-  }
-}
-
-function handleCountryNext() {
-  var country = answers.country;
-  if (country === 'CA' || country === 'US') {
-    var zi = document.getElementById('zipInput');
-    var zh = document.getElementById('zipHint');
-    var zt = document.getElementById('zipTitle');
-    if (country === 'US') { zt.textContent = 'What is your ZIP code?'; zi.placeholder = '12345'; zh.textContent = 'Enter your US ZIP code'; }
-    else { zt.textContent = 'What is your postal code?'; zi.placeholder = 'A1A 1A1'; zh.textContent = 'Enter your Canadian postal code'; }
-    goTo(11);
-  } else {
-    saveRegistro();
-    goTo(12);
-  }
-}
-
-function handleZipInput() {
-  var val = document.getElementById('zipInput').value.trim();
-  document.getElementById('zipBtn').classList.toggle('active', val.length >= 3);
-}
-
-function handleZipNext() {
-  answers.zip_code = document.getElementById('zipInput').value.trim();
-  saveRegistro();
-  goTo(12);
-}
-
-// ═══════════════════════════════════════════
-// LEAD INPUT
-// ═══════════════════════════════════════════
-function handleLeadInput() {
-  var n = document.getElementById('nameInput').value.trim();
-  var p = document.getElementById('phoneInput').value.trim();
-  document.getElementById('leadBtn').classList.toggle('active', n.length > 1 && p.length > 5);
-}
-
-function handleLeadSubmit() {
-  var btn = document.getElementById('leadBtn');
-  btn.classList.add('sending');
-  var payload = buildPayload('lead');
-  payload.name = document.getElementById('nameInput').value.trim();
-  payload.phone = document.getElementById('phoneInput').value.trim();
-  sendToSheet(payload, function() {
-    btn.classList.remove('sending');
-    goTo(13);
-  });
-}
-
-// ═══════════════════════════════════════════
-// SCORE CALCULATION
-// ═══════════════════════════════════════════
-function calcScore() {
-  var total = 0;
-  for (var field in answers) {
-    if (SCORES[field] && SCORES[field][answers[field]] !== undefined) {
-      total += SCORES[field][answers[field]];
-    }
-  }
-  return total;
-}
-
-// ═══════════════════════════════════════════
-// DATA LAYER
-// ═══════════════════════════════════════════
-function buildPayload(type) {
-  return {
-    type: type,
-    ownership_status: answers.ownership_status || '',
-    home_type: answers.home_type || '',
-    bathroom_count: answers.bathroom_count || '',
-    renovation_count: answers.renovation_count || '',
-    renovation_timeline: answers.renovation_timeline || '',
-    bathroom_style: answers.bathroom_style || '',
-    renovation_type: answers.renovation_type || '',
-    country: answers.country || '',
-    zip_code: answers.zip_code || '',
-    score: calcScore()
-  };
-}
-
-function saveRegistro() {
-  if (registroSaved) return;
-  registroSaved = true;
-  var payload = buildPayload('registro');
-  sendToSheet(payload);
-
-  // ═══════════════════════════════════════════
-  // 🔥 CONVERSION TRACKING — FIRE HERE
-  // This is the "Registro" moment: user completed the quiz.
-  // Paste your Meta and Google conversion events below.
-  //
-  // META PIXEL:
-  // fbq('track', 'CompleteRegistration', { value: payload.score, currency: 'CAD' });
-  //
-  // GOOGLE ADS:
-  // gtag('event', 'conversion', { send_to: 'AW-XXXXXXXXX/XXXXXX' });
-  //
-  // GOOGLE ANALYTICS:
-  // gtag('event', 'quiz_completed', { score: payload.score, country: payload.country });
-  // ═══════════════════════════════════════════
-}
-
-function sendToSheet(payload, callback) {
-  fetch(SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  })
-  .then(function() { if (callback) callback(); })
-  .catch(function(err) {
-    console.error('Sheet save error:', err);
-    if (callback) callback();
-  });
-}
-</script>
+<script src="script.js"></script>
 </body>
 </html>
