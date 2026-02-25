@@ -1,1 +1,43 @@
-index
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Quiz — Protección de Luz Azul</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="quiz-wrapper">
+
+    <!-- Top Bar -->
+    <div class="top-bar" id="topBar" style="display:none;">
+      <button class="back-btn" id="backBtn" aria-label="Volver">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <div class="logo" id="topLogo"></div>
+      <button class="help-btn" id="helpBtn" aria-label="Ayuda">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      </button>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar-container" id="progressBarContainer" style="display:none;">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Quiz Container -->
+    <div class="quiz-container" id="quizContainer"></div>
+
+    <!-- Bottom Bar -->
+    <div class="bottom-bar" id="bottomBar" style="display:none;">
+      <button class="cta-btn shimmer" id="ctaBtn">Continuar</button>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
